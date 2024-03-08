@@ -36,3 +36,10 @@ func on_timer_timeout():
 	player.get_parent().add_child(sword_instance)
 	# Makes the sword appear on the closest one
 	sword_instance.global_position = enemies[0].global_position
+	# Randomize the rotation + offset (4 pixels)
+	sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
+
+	
+	var enemy_direction = enemies[0].global_position - sword_instance.global_position
+	sword_instance.rotation = enemy_direction.angle()
+	
