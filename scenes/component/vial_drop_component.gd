@@ -1,13 +1,17 @@
 extends Node
 
-@export var vial_scene: PackedScene
+@export_range(0, 1) var drop_percent: float = 0.5
 @export var health_component: Node
+@export var vial_scene: PackedScene
 
 func _ready():
 	(health_component as HealthComponent).died.connect (on_died)
 	
 # When it dies it will create a vial in the enemy position
 func on_died():
+	if randf() >= drop_percent:
+		return
+	
 	if vial_scene == null:
 		return
 

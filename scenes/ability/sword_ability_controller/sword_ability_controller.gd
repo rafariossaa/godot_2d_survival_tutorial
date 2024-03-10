@@ -1,10 +1,9 @@
 # Spawn the sword in a automatic fashion
-
-
 extends Node
 
 const MAX_RANGE = 150
 @export var sword_ability: PackedScene
+var damage = 5
 
 
 # Called when the node enters the scene tree for the first time.
@@ -32,8 +31,10 @@ func on_timer_timeout():
 		return a_distance < b_distance
 	)
 	
-	var sword_instance = sword_ability.instantiate() as Node2D
+	var sword_instance = sword_ability.instantiate() as SwordAbility
 	player.get_parent().add_child(sword_instance)
+	sword_instance.hitbox_component.damage = damage
+	
 	# Makes the sword appear on the closest one
 	sword_instance.global_position = enemies[0].global_position
 	# Randomize the rotation + offset (4 pixels)
