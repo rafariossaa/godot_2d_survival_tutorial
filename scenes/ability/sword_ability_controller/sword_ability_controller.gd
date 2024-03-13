@@ -36,7 +36,8 @@ func on_timer_timeout():
 	)
 	
 	var sword_instance = sword_ability.instantiate() as SwordAbility
-	player.get_parent().add_child(sword_instance)
+	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
+	foreground_layer.add_child(sword_instance)
 	sword_instance.hitbox_component.damage = damage
 	
 	# Makes the sword appear on the closest one
@@ -54,7 +55,7 @@ func on_ability_upgrades_added(upgrade: AbilityUpgrade, current_upgrades: Dictio
 	if upgrade.id != "sword_rate":
 		return
 
-	var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .5
+	var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .1
 	$Timer.wait_time = base_wait_time * (1 - percent_reduction)
 	$Timer.start()
 	
