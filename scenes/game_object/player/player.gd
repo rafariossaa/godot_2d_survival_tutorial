@@ -48,12 +48,10 @@ func update_health_display():
 func on_body_entered(_other_body: Node2D):
 	number_colliding_bodies += 1
 	check_deal_damage()
-	print("body entered")
 
 
 func on_body_exited(_other_body: Node2D):
 	number_colliding_bodies -= 1
-	print("body exited")
 
 
 func on_damage_interval_timer_timeout():
