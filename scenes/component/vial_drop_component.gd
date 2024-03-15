@@ -9,7 +9,7 @@ func _ready():
 	
 # When it dies it will create a vial in the enemy position
 func on_died():
-	if randf() >= drop_percent:
+	if randf() > drop_percent:
 		return
 	
 	if vial_scene == null:
