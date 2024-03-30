@@ -12,6 +12,7 @@ var base_spawn_time = 0
 
 func _ready():
 	timer.timeout.connect(on_timer_timeout)
+	base_spawn_time = timer.wait_time
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 
 func get_spawn_position():
@@ -59,6 +60,5 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 	var time_off = (.1 / 12) * arena_difficulty
 	#Clamp to a limit
 	time_off = min(time_off, .7)
-	print(time_off)
+	print("Time: " + str(base_spawn_time - time_off) )
 	timer.wait_time = base_spawn_time - time_off
-	
