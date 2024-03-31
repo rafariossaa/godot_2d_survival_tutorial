@@ -7,7 +7,7 @@ extends CharacterBody2D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	velocity_component.accelerate_to_player()
-	velocity_component.move()
+	velocity_component.move(self)
 	
 	# Face the sprite in the direction it is moving
 	var move_sign = sign(velocity.x)
