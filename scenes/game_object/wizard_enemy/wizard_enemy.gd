@@ -1,17 +1,15 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 40
-
-@onready var health_component: HealthComponent = $HealthComponent
 @onready var visuals = $Visuals
 @onready var velocity_component = $VelocityComponent
 
-func _process(_delta):
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
 	velocity_component.accelerate_to_player()
-	velocity_component.move(self)
+	velocity_component.move()
 	
 	# Face the sprite in the direction it is moving
 	var move_sign = sign(velocity.x)
 	if move_sign != 0:
-		visuals.scale = Vector2(-move_sign, 1)
-
+		visuals.scale = Vector2(move_sign, 1)
