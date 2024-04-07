@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq67n0xogok68"]
+[gd_scene load_steps=14 format=3 uid="uid://dq67n0xogok68"]
 
 [ext_resource type="Script" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_4ivcd"]
 [ext_resource type="Texture2D" uid="uid://cq11dm3qffmi3" path="res://scenes/game_object/basic_enemy/base_enemy.png" id="2_4kk1l"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ciapfp5rw0wsb" path="res://scenes/component/vial_drop_component.tscn" id="3_7kdn7"]
 [ext_resource type="PackedScene" uid="uid://bqec4pma0nrq7" path="res://scenes/component/velocity_component.tscn" id="4_a25t2"]
 [ext_resource type="PackedScene" uid="uid://ds43luchg7e4u" path="res://scenes/component/hurtbox_component.tscn" id="4_iqpdv"]
+[ext_resource type="PackedScene" uid="uid://8d4a5e0xksi3" path="res://scenes/component/hit_flash_component.tscn" id="5_eglbd"]
 [ext_resource type="PackedScene" uid="uid://dyt526ysai3ey" path="res://scenes/component/death_component.tscn" id="7_t8jn4"]
 
 [sub_resource type="Animation" id="Animation_fhk73"]
@@ -95,6 +96,10 @@ drop_percent = 0.35
 health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("4_a25t2")]
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_eglbd")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_iqpdv")]
 visible = false
