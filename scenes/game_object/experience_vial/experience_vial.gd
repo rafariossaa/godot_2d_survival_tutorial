@@ -37,3 +37,4 @@ func on_area_entered(_other_area: Area2D):
 	tween.chain() # Wait for the previous tweens to finish
 	tween.tween_callback(collect)
 	
+	$RandomStreamPlayer2DComponent.play_random()
