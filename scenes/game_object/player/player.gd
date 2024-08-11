@@ -25,7 +25,7 @@ func _ready():
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	var movement_vector = get_movement_vector()
 	var direction = movement_vector.normalized()
 	velocity_component.accelerate_in_direction(direction)
@@ -75,6 +75,7 @@ func on_damage_interval_timer_timeout():
 
 
 func on_health_changed():
+	GameEvents.emit_player_damaged()
 	update_health_display()
 
 

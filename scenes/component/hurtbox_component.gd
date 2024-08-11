@@ -1,6 +1,8 @@
 extends Area2D
 class_name HurtboxComponent
 
+signal hit
+
 @export var health_component: Node
 
 #Other way of loading scenes
@@ -30,3 +32,5 @@ func on_area_entered(other_area: Area2D):
 		format_string = "%0.0f"
 
 	floating_text.start(format_string % (hitbox_component.damage))
+
+	hit.emit()
