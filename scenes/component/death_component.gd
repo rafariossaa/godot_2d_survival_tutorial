@@ -5,11 +5,11 @@ extends Node2D
 
 
 func _ready():
-	health_component.died.connect(on_test)
+	health_component.died.connect(on_died)
 	$GPUParticles2D.texture = sprite.texture
 
 
-func on_test():
+func on_died():
 	if owner == null || not owner is Node2D:
 		return
 
@@ -21,3 +21,4 @@ func on_test():
 
 	global_position = spawn_position
 	$AnimationPlayer.play("default")
+	$HitRandomAudioPlayerComponent.play_random()

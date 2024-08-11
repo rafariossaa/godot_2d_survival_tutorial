@@ -6,6 +6,8 @@ extends CharacterBody2D
 var is_moving = false
 
 
+func _ready():
+	$HurtboxComponent.hit.connect(on_hit)
 
 func _process(_delta):
 	if is_moving:
@@ -23,3 +25,7 @@ func _process(_delta):
 
 func set_is_moving(moving: bool):
 	is_moving = moving
+
+
+func on_hit():
+	$HitRandomAudioPlayerComponent.play_random()
