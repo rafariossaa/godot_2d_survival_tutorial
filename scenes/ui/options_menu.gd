@@ -27,7 +27,6 @@ func update_display():
 func get_bus_volume_percent(bus_name: String):
 	var bus_index = AudioServer.get_bus_index(bus_name)
 	var volume_db = AudioServer.get_bus_volume_db(bus_index)
-	print("bus_name:" + bus_name + " volume: " + str(bus_index) +"--"+ str(volume_db) +"--" )
 	return db_to_linear(volume_db)
 
 
@@ -52,4 +51,6 @@ func on_audio_slider_changed(value: float, bus_name: String):
 
 
 func on_back_button_pressed():
+	ScreenTransition.transition()
+	await ScreenTransition.transitioned_halfway
 	back_pressed.emit()
