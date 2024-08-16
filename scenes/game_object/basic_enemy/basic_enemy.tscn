@@ -103,9 +103,10 @@ autoplay = "walk"
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_rug2a")]
 
-[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_7kdn7")]
+[node name="VialDropComponent" parent="." instance=ExtResource("3_7kdn7")]
 drop_percent = 0.35
-health_component = NodePath("../HealthComponent")
+health_component = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://scenes/component/health_component.gd"),"max_health":10.0)
+
 
 [node name="VelocityComponent" parent="." instance=ExtResource("4_a25t2")]
 
